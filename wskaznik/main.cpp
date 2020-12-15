@@ -162,10 +162,7 @@ void usunElement(int index)
     delete (wskTMPDelete);
 }
 
-bool testID(){
-    int szukaneID; // tworzę zmienną w której bedzie szukane id
-    cout << "Wpisz szukane id: ";
-    cin >> szukaneID;
+bool testID(int szukaneID){
     Element *wskElement =  glowa;
 
     if (glowa != NULL){
@@ -180,6 +177,16 @@ bool testID(){
    return false;
 }
 
+string odczytzID(int szukaneID){
+  Element *wskElement =  glowa;
+  while(wskElement != NULL){
+      if (wskElement->id == szukaneID){
+        string wartoscOdDanegoID = wskElement->wartosc;
+        return wartoscOdDanegoID;
+      }
+      wskElement = wskElement->nast;
+  }
+}
 
 int silnia(int a)
 {
@@ -220,10 +227,14 @@ int main(int argc, char const *argv[])
     usunElement(2);
     wypiszListe();
 
+    int szukaneID;
+    cout << "Wpisz szukane id: ";
+    cin >> szukaneID;
+
     bool wpisaneID;
-    wpisaneID = testID();
+    wpisaneID = testID(szukaneID);
     if(wpisaneID==1){
-      cout << "dziala";
+      cout << "Wartosc tego ID: " << odczytzID(szukaneID);
     }
     else{
       cout << "nie ma takiego ID";
