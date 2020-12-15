@@ -163,26 +163,21 @@ void usunElement(int index)
 }
 
 bool testID(){
-    int szukaneID;
+    int szukaneID; // tworzę zmienną w której bedzie szukane id
     cout << "Wpisz szukane id: ";
     cin >> szukaneID;
     Element *wskElement =  glowa;
 
-    if (glowa == NULL) {
-        cout << "Brak elementow w liscie" << endl;
-        return false;
-    }
-    else{
-      while (wskElement->nast != NULL){
-        if (wskElement->id == szukaneID){
-          return true;
-          wskElement = wskElement->nast;
-        }
-        else{
-          return false;
-        }
-      }
-    }
+    if (glowa != NULL){
+       while(wskElement != NULL){
+           if (wskElement->id == szukaneID){
+             return true;
+           }
+           wskElement = wskElement->nast;
+       }
+       return false;
+   }
+   return false;
 }
 
 
@@ -224,7 +219,15 @@ int main(int argc, char const *argv[])
     wypiszListe();
     usunElement(2);
     wypiszListe();
-    testID();
+
+    bool wpisaneID;
+    wpisaneID = testID();
+    if(wpisaneID==1){
+      cout << "dziala";
+    }
+    else{
+      cout << "nie ma takiego ID";
+    }
 
     return 0;
 }
