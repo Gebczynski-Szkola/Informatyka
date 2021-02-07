@@ -27,7 +27,16 @@ bool czyParzystaDlugosc(string haslo){  //dop
 }
 
 bool czyPalindrom(string haslo){  //dst
+  int i=0, j = (haslo.size()-1);
 
+	while(i<j)
+	{
+		if(haslo[i]!=haslo[j])
+			return false;
+		++i;
+		--j;
+	}
+	return true;
 }
 bool czyTakieSameZnakiObok(string haslo){  //db
 
