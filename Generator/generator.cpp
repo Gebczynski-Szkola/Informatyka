@@ -47,17 +47,13 @@ bool czyPalindrom(string haslo){
 }
 
 bool czyTakieSameZnakiObok(string haslo){  //db
-  char znak, sprawdzenie;
-	for (int i=0; i<(haslo.size()-1); i++){
-	    znak=haslo[i];
-	    for (int j=0; j<(haslo.size()-1); j++){
-                sprawdzenie=haslo[j];
-            if((sprawdzenie==znak)&&(i!=j)){
-                return true;
-            }
-	    }
-}
-return false;
+  for(int i=0; i<haslo.size(); i++){
+    int znak = haslo[i];
+    if(znak == haslo[i+1]){
+      return true;
+    }
+  }
+  return false;
 }
 
 int ilePowtorzenZnaku(string haslo){  //bdb
