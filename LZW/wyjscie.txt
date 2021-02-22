@@ -1,0 +1,24 @@
+Numer lancucha: 5;
+Lancuch wejsciowy: aadcabbcbacccdddaab;
+[a,b,c,d];
+
+Po kompresji: 0, 0, 3, 2, 0, 1, 1, 2, 1, 0, 2, 13, 3, 15, 4, 1
+
+C   S   C+S
+
+a   a   aa
+a   d   ad
+d   c   dc
+c   a   ca
+a   b   ab
+b   b   bb
+b   c   bc
+c   b   cb
+b   a   ba
+a   c   ac
+c   c   cc
+cc  d   ccd
+d   d   dd
+dd  a   dda
+aa  b   aab
+b   -   ---

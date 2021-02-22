@@ -1,0 +1,21 @@
+Slownik
+Kod Wartosc
+0: a
+1: b
+2: c
+3: d
+4: aa
+5: ad
+6: dc
+7: ca
+8: ab
+9: bb
+10: bc
+11: cb
+12: ba
+13: ac
+13: cc
+14: ccd
+15: dd
+16: dda
+17: aab
