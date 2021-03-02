@@ -21,11 +21,11 @@ bool otworzPliki(){
     cout << "Podaj nazwę pliku wynikowego: ";
    // cin >> sciezkaWyjscie;
 
-  // sciezkaWejscie = "lzwdane.txt";     // do testów kompresji
-  // sciezkaWyjscie = "lzwwynik.txt";
+   sciezkaWejscie = "lzwdane.txt";     // do testów kompresji
+   sciezkaWyjscie = "lzwwynik.txt";
 
-   sciezkaWejscie = "lzwwynik.txt";     // do testów dekompresji
-   sciezkaWyjscie = "lzwdekompresja.txt";
+  // sciezkaWejscie = "lzwwynik.txt";     // do testów dekompresji
+  // sciezkaWyjscie = "lzwdekompresja.txt";
 
 
 
@@ -105,13 +105,22 @@ void kompresjaLZW(){
 
 void dekompresjaLZW(){
 // to do ;)
+    string slowo;
+    string dwa;
+    int pk;
+    pk = 0;
+
+
+    znak = slownik[index][pk];
+    slownik[ileWslowniku++]=dwa+znak; <-> slownik[ileWslowniku++]=dwa+slownik[index][0];
+    string scscs = slowo+slowo[0];
 
 }
 
 int main(int argc, char const *argv[])
 {
 
- /*   if (!otworzPliki())  // blokuje/w komentarz do testów dekompresji
+    if (!otworzPliki())  // blokuje/w komentarz do testów dekompresji
       return 0;
     cout << "czas na kompresję ;)"   << endl;
     inicjacjaSlownika();
@@ -119,12 +128,12 @@ int main(int argc, char const *argv[])
 
     wejscie.close();
     wyjscie.close();
-*/
-    cout << "czas na dekompresję ;)"   << endl;
-    if (!otworzPliki())
-      return 0;
-    inicjacjaSlownika();
-    dekompresjaLZW();
+
+ //   cout << "czas na dekompresję ;)"   << endl;
+ //   if (!otworzPliki())
+ //     return 0;
+  //  inicjacjaSlownika();
+  //  dekompresjaLZW();
 
 
     return 0;
