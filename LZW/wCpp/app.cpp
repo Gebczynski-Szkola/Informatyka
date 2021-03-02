@@ -21,8 +21,14 @@ bool otworzPliki(){
     cout << "Podaj nazwę pliku wynikowego: ";
    // cin >> sciezkaWyjscie;
 
-   sciezkaWejscie = "lzwdane.txt";
-   sciezkaWyjscie = "lzwwynik.txt";
+  // sciezkaWejscie = "lzwdane.txt";     // do testów kompresji
+  // sciezkaWyjscie = "lzwwynik.txt";
+
+   sciezkaWejscie = "lzwwynik.txt";     // do testów dekompresji
+   sciezkaWyjscie = "lzwdekompresja.txt";
+
+
+
     wejscie.open(sciezkaWejscie,ios::in);
     if(!wejscie.good()){
         cout << "Nie otwarto pliku wejściowego" << endl;
@@ -72,8 +78,9 @@ void kompresjaLZW(){
     wejscie >> znak;
     C = znak;
 
-    while(!wejscie.eof()){
-        wejscie >> znak;
+    //while(!wejscie.eof()){
+    //    wejscie >> znak;
+    while(wejscie >> znak){    // to rozwiazanie nie powoduje dwukratnej ananalizy ostatniego znaku z pliku
         S = znak;
         C_S = C+S;
         int kod = wSlowniku(C_S);
@@ -87,21 +94,38 @@ void kompresjaLZW(){
             slownik[ileWslowniku++]= C_S;
             C=S;
             wyjscie<<kod<<" ";
+
         }
 
     }
+    wyjscie<<wSlowniku(C) << " ";
 
+
+}
+
+void dekompresjaLZW(){
+// to do ;)
 
 }
 
 int main(int argc, char const *argv[])
 {
 
-    if (!otworzPliki())
+ /*   if (!otworzPliki())  // blokuje/w komentarz do testów dekompresji
       return 0;
-    cout << "czas na lagorytm ;)"   << endl;
+    cout << "czas na kompresję ;)"   << endl;
     inicjacjaSlownika();
     kompresjaLZW();
+
+    wejscie.close();
+    wyjscie.close();
+*/
+    cout << "czas na dekompresję ;)"   << endl;
+    if (!otworzPliki())
+      return 0;
+    inicjacjaSlownika();
+    dekompresjaLZW();
+
 
     return 0;
 }
