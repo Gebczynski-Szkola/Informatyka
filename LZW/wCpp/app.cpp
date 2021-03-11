@@ -16,19 +16,16 @@ int ileWslowniku;
 
 bool otworzPliki(){
     string sciezkaWejscie , sciezkaWyjscie;
-    cout << "Podaj nazwę pliku do kompresji: ";
-   // cin >> sciezkaWejscie;
+    cout << "Podaj nazwę pliku do de/kompresji: ";
+    cin >> sciezkaWejscie;
     cout << "Podaj nazwę pliku wynikowego: ";
-   // cin >> sciezkaWyjscie;
+    cin >> sciezkaWyjscie;
 
-   sciezkaWejscie = "lzwdane.txt";     // do testów kompresji
-   sciezkaWyjscie = "lzwwynik.txt";
+  // sciezkaWejscie = "lzwdane.txt";     // do testów kompresji
+  // sciezkaWyjscie = "lzwwynik.txt";
 
   // sciezkaWejscie = "lzwwynik.txt";     // do testów dekompresji
   // sciezkaWyjscie = "lzwdekompresja.txt";
-
-
-
     wejscie.open(sciezkaWejscie,ios::in);
     if(!wejscie.good()){
         cout << "Nie otwarto pliku wejściowego" << endl;
@@ -43,7 +40,7 @@ bool otworzPliki(){
     return true;
 }
 void inicjacjaSlownika(){
-    cout << "Podaj rozmiar slownika min 62 :";
+    cout << "Podaj rozmiar slownika min 500 :";
     cin >> rozmiarSlownika;
     slownik = new string[rozmiarSlownika];
     // <a-z><A-Z><0-9> (26+26+10)
@@ -73,6 +70,7 @@ void kompresjaLZW(){
     string C;
     string S;
     string C_S;
+
 
     char znak ;
     wejscie >> znak;
@@ -105,15 +103,38 @@ void kompresjaLZW(){
 
 void dekompresjaLZW(){
 // to do ;)
-    string slowo;
+  /*  string slowo;
     string dwa;
-    int pk;
-    pk = 0;
+    int index;
+    index = 1;
+    slowo = slownik[index];  // slownik -> [ala,kasia,as]    slowo <- kasia
+    char znak = slowo[0];   // slowo -> kasia -> [k|a|s|i|a]     znak <- k
 
-
-    znak = slownik[index][pk];
+    znak = slownik[index][0];
     slownik[ileWslowniku++]=dwa+znak; <-> slownik[ileWslowniku++]=dwa+slownik[index][0];
     string scscs = slowo+slowo[0];
+    */
+
+   int pk ,k ;
+   string pc , scscs;
+   wejscie >> pk;
+   wyjscie << slownik[pk];
+   while(wejscie >> k ){
+       pc = slownik[pk];
+       if ( k < ileWslowniku) { //dodaj do słownika pc + pierwszy symbol ciągu słownik[k]),
+                                //a na wyjście wypisz cały ciąg słownik[k].
+        slownik[ileWslowniku++] = pc +slownik[k][0];
+        wyjscie << slownik[k];
+       }
+       else{
+         slownik[ileWslowniku++] = pc+pc[0]  ;
+         wyjscie << pc+pc[0];
+       }
+       pk = k;
+   }
+
+
+
 
 }
 
@@ -129,11 +150,12 @@ int main(int argc, char const *argv[])
     wejscie.close();
     wyjscie.close();
 
- //   cout << "czas na dekompresję ;)"   << endl;
- //   if (!otworzPliki())
- //     return 0;
-  //  inicjacjaSlownika();
-  //  dekompresjaLZW();
+
+    cout << "czas na dekompresję ;)"   << endl;
+    if (!otworzPliki())
+      return 0;
+    inicjacjaSlownika();
+    dekompresjaLZW();
 
 
     return 0;
