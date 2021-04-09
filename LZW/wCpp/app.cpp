@@ -2,6 +2,8 @@
  kompresor plików tekstowych algorytmem LZW
  wejście : plik tekstowy zawierający znaki alfabetu łacińskiego  oraz cyfry <A-Z><a-z><0-9>
  wyjście plik zawierający kody wynikowe z kompresji algorytmem LZW
+
+ dodać znaki specjalne do programu 
 */
 
 #include <fstream>
