@@ -3,7 +3,7 @@
  wejście : plik tekstowy zawierający znaki alfabetu łacińskiego  oraz cyfry <A-Z><a-z><0-9>
  wyjście plik zawierający kody wynikowe z kompresji algorytmem LZW
 
- dodać znaki specjalne do programu 
+ dodać znaki specjalne do programu
 */
 
 #include <fstream>
@@ -18,9 +18,9 @@ int ileWslowniku;
 
 bool otworzPliki(){
     string sciezkaWejscie , sciezkaWyjscie;
-    cout << "Podaj nazwę pliku do de/kompresji: ";
+    cout << "Podaj nazwe pliku do de/kompresji: ";
     cin >> sciezkaWejscie;
-    cout << "Podaj nazwę pliku wynikowego: ";
+    cout << "Podaj nazwe pliku wynikowego: ";
     cin >> sciezkaWyjscie;
 
   // sciezkaWejscie = "lzwdane.txt";     // do testów kompresji
@@ -46,14 +46,11 @@ void inicjacjaSlownika(){
     cin >> rozmiarSlownika;
     slownik = new string[rozmiarSlownika];
     // <a-z><A-Z><0-9> (26+26+10)
-    for (int i = 0; i < 26; i++)
+    for (int i = 0; i < 94; i++) // zwiekszenie liczby do 94 znaków, tyle jest znaków specjalnych, liter i cyfr 
     {
-        slownik[i] = (char)(i+97);
-        slownik[i+26] = (char)(i+65);
-        if ( i < 10)
-           slownik[i+26+26] = (char)(i+48);
+        slownik[i] = (char)(i+32); // znaki zaczynaja sie od 32
     }
-    ileWslowniku = 62;
+    ileWslowniku = 94; // w słowniku jest 94 znaki
 
     for (int i = 0; i < ileWslowniku; i++)
        cout << slownik[i] << " ";
@@ -99,8 +96,6 @@ void kompresjaLZW(){
 
     }
     wyjscie<<wSlowniku(C) << " ";
-
-
 }
 
 void dekompresjaLZW(){
@@ -134,8 +129,6 @@ void dekompresjaLZW(){
        }
        pk = k;
    }
-
-
 
 
 }
